@@ -5,6 +5,7 @@
 # 許可するファイルの指定
 !/.gitignore
 !/.gitmodules
+!/init
 !/*.kicad_pcb
 !/*.pro
 !/*.sch
