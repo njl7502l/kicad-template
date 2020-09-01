@@ -6,6 +6,7 @@
 !/.gitignore
 !/.gitmodules
 !/init
+!/README.md
 !/*.kicad_pcb
 !/*.pro
 !/*.sch
