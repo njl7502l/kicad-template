@@ -1,0 +1,16 @@
+# すべてをignore
+
+/*
+
+# 許可するファイルの指定
+!/.gitignore
+!/*.kicad-pcb
+!/*.pro
+!/*.sch
+!/fp-lib-table
+!/sym-lib-table
+!/.zip
+
+
+# 許可するフォルダの指定
+!/kicad/
