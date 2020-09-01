@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+git co master
+
 echo "Start initialization..."
 
 DEFAULT_NAME="Untitled"
@@ -16,7 +18,13 @@ do
   echo UPDATE: $UPDATE
   git mv "$ORIGIN" "$UPDATE"
 done
+git add .
+git commit -m 'zsh init: rename files'
 
-git submodule add git@github.com:NJL7502L/kicad.git
+git submodule add -f  git@github.com:NJL7502L/kicad.git
+git add .
+git commit -m 'zsh init: add submodule kicad'
+
+git push origin master
 
 echo "DONE!!"
