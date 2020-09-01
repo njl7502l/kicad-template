@@ -4,7 +4,7 @@
 
 # 許可するファイルの指定
 !/.gitignore
-!/*.kicad-pcb
+!/*.kicad_pcb
 !/*.pro
 !/*.sch
 !/fp-lib-table
