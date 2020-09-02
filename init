@@ -1,30 +1,46 @@
 #!/bin/zsh
 
-git co master
-
+echo "########################################################"
+echo "\n"
 echo "Start initialization..."
+echo "\n"
 
 DEFAULT_NAME="Untitled"
 CURRENT=$(cd $(dirname $0);pwd)
 DIR_NAME=`echo "$CURRENT" | sed -e 's/.*\/\([^\/]*\)$/\1/'`
 
 EXTENSIONS=(".pro" ".sch" ".kicad_pcb")
-
+echo "--------------------------------------------------------"
+echo "1 : Rename Files"
 for EXTENSION in ${EXTENSIONS[@]}
 do
   ORIGIN="$DEFAULT_NAME$EXTENSION"
   UPDATE="$DIR_NAME$EXTENSION"
-  echo ORIGIN: $ORIGIN
-  echo UPDATE: $UPDATE
+  echo "\t" ORIGIN: $ORIGIN
+  echo "\t" UPDATE: $UPDATE
   git mv "$ORIGIN" "$UPDATE"
 done
 git add .
 git commit -m 'zsh init: rename files'
 
+echo "\n"
+echo "--------------------------------------------------------"
+echo "2 : Git Submodule add Kicad"
 git submodule add -f  git@github.com:NJL7502L/kicad.git
 git add .
 git commit -m 'zsh init: add submodule kicad'
+echo "\n"
+echo "--------------------------------------------------------"
+echo "3 : Git Submodule add Digikey"
+git submodule add -f git@github.com:Digi-Key/digikey-kicad-library.git
+git add .
+git commit -m 'zsh init: add submodule digikey'
+echo "\n"
+echo "--------------------------------------------------------"
+echo "4 : Git push"
 
 git push origin master
-
+echo "\n"
+echo "--------------------------------------------------------"
 echo "DONE!!"
+echo "########################################################"
