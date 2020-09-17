@@ -20,27 +20,39 @@ do
   echo "\t" UPDATE: $UPDATE
   git mv "$ORIGIN" "$UPDATE"
 done
-git add .
-git commit -m 'zsh init: rename files'
+
+if test $# -lt 1 || test 'no-push' != $1 ;then
+  git add .
+  git commit -m 'zsh init: rename files'
+fi
 
 echo "\n"
 echo "--------------------------------------------------------"
 echo "2 : Git Submodule add Kicad"
 git submodule add -f  git@github.com:NJL7502L/kicad.git
-git add .
-git commit -m 'zsh init: add submodule kicad'
+
+if test $# -lt 1 || test 'no-push' != $1 ;then
+  git add .
+  git commit -m 'zsh init: add submodule kicad'
+fi
 echo "\n"
 echo "--------------------------------------------------------"
 echo "3 : Git Submodule add Digikey"
 git submodule add -f git@github.com:Digi-Key/digikey-kicad-library.git
-git add .
-git commit -m 'zsh init: add submodule digikey'
-echo "\n"
-echo "--------------------------------------------------------"
-echo "4 : Git push"
 
-git push origin master
+if test $# -lt 1 || test 'no-push' != $1 ;then
+  git add .
+  git commit -m 'zsh init: add submodule digikey'
+fi
 echo "\n"
+
+if test $# -lt 1 || test 'no-push' != $1 ;then
+  echo "--------------------------------------------------------"
+  echo "4 : Git push"
+
+  git push origin master
+  echo "\n"
+fi
 echo "--------------------------------------------------------"
 echo "5 : mkdir gbr dsn"
 
