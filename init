@@ -46,19 +46,33 @@ if test $# -lt 1 || test 'no-push' != $1 ;then
 fi
 echo "\n"
 
-if test $# -lt 1 || test 'no-push' != $1 ;then
-  echo "--------------------------------------------------------"
-  echo "4 : Git push"
-
-  git push origin master
-  echo "\n"
-fi
 echo "--------------------------------------------------------"
-echo "5 : mkdir gbr dsn"
+echo "4 : mkdir gbr dsn"
 
 mkdir gbr
 mkdir dsn
 echo "\n"
+
+echo "--------------------------------------------------------"
+echo "5 : edit readme"
+
+rm README.md
+touch README.md
+echo "# $DIR_NAME" >> README.md
+
+if test $# -lt 1 || test 'no-push' != $1 ;then
+  git add .
+  git commit -m 'zsh init: edit readme'
+fi
+echo "\n"
+
+if test $# -lt 1 || test 'no-push' != $1 ;then
+  echo "--------------------------------------------------------"
+  echo "6 : Git push"
+
+  git push origin master
+  echo "\n"
+fi
 echo "--------------------------------------------------------"
 echo "DONE!!"
 echo "########################################################"
