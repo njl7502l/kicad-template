@@ -45,12 +45,26 @@ if test $# -lt 1 || test 'no-push' != $1 ;then
   git commit -m 'zsh init: add submodule digikey'
 fi
 echo "\n"
-
 echo "--------------------------------------------------------"
-echo "4 : mkdir gbr dsn"
+echo "4 : edit sym-lib-table Digikey"
 
-mkdir gbr
-mkdir dsn
+sed -i "" -e '$d' sym-lib-table
+find digikey-kicad-library/digikey-symbols -maxdepth 1 -name "*.lib" | while read -r fname
+do
+  # ファイル名を取り出す（拡張子あり）
+  fname_ext="${fname##*/}"
+  # ファイル名を取り出す（拡張子なし）
+  name="${fname_ext%.*}"
+
+  echo -n '.'
+  echo "  (lib (name $name)(type Legacy)(uri \${KIPRJMOD}/$fname)(options \"\")(descr \"\"))" >> sym-lib-table
+done
+echo ")" >> sym-lib-table
+
+if test $# -lt 1 || test 'no-push' != $1 ;then
+  git add .
+  git commit -m 'zsh init: edit sym-lib-table digikey'
+fi
 echo "\n"
 
 echo "--------------------------------------------------------"
@@ -66,9 +80,16 @@ if test $# -lt 1 || test 'no-push' != $1 ;then
 fi
 echo "\n"
 
+echo "--------------------------------------------------------"
+echo "6 : mkdir gbr dsn"
+
+mkdir gbr
+mkdir dsn
+echo "\n"
+
 if test $# -lt 1 || test 'no-push' != $1 ;then
   echo "--------------------------------------------------------"
-  echo "6 : Git push"
+  echo "7 : Git push"
 
   git push origin master
   echo "\n"
