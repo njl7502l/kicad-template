@@ -94,9 +94,21 @@ mkdir gbr
 mkdir dsn
 echo "\n"
 
+echo "--------------------------------------------------------"
+echo "7 : rm init file"
+
+rm init
+echo "# $DIR_NAME" >> README.md
+
+if test $# -lt 1 || test 'no-push' != $1 ;then
+  git add .
+  git commit -m 'zsh init: rm init'
+fi
+echo "\n"
+
 if test $# -lt 1 || test 'no-push' != $1 ;then
   echo "--------------------------------------------------------"
-  echo "7 : Git push"
+  echo "8 : Git push"
 
   git push origin master
   echo "\n"
