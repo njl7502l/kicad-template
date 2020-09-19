@@ -60,7 +60,7 @@ do
   echo "  (lib (name $name)(type Legacy)(uri \${KIPRJMOD}/$fname)(options \"\")(descr \"\"))" >> sym-lib-table
 done
 echo ")" >> sym-lib-table
-
+echo 'DONE.'
 if test $# -lt 1 || test 'no-push' != $1 ;then
   git add .
   git commit -m 'zsh init: edit sym-lib-table digikey'
