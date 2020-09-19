@@ -40,8 +40,8 @@
     (zone_clearance 0.508)
     (zone_45_only no)
     (trace_min 0.2)
-    (via_size 0.8)
-    (via_drill 0.3)
+    (via_size 0.65)
+    (via_drill 0.35)
     (via_min_size 0.6)
     (via_min_drill 0.3)
     (user_via 0.6 0.3)
@@ -99,8 +99,89 @@
   (net_class Default "This is the default net class."
     (clearance 0.1524)
     (trace_width 0.25)
-    (via_dia 0.8)
+    (via_dia 0.65)
+    (via_drill 0.35)
+    (uvia_dia 0.3)
+    (uvia_drill 0.1)
+  )
+
+  (net_class wire-0.2 ""
+    (clearance 0.1524)
+    (trace_width 0.2)
+    (via_dia 0.6)
     (via_drill 0.3)
+    (uvia_dia 0.3)
+    (uvia_drill 0.1)
+  )
+
+  (net_class wire-0.3 ""
+    (clearance 0.1524)
+    (trace_width 0.3)
+    (via_dia 0.6)
+    (via_drill 0.3)
+    (uvia_dia 0.3)
+    (uvia_drill 0.1)
+  )
+
+  (net_class wire-0.4 ""
+    (clearance 0.1524)
+    (trace_width 0.4)
+    (via_dia 0.6)
+    (via_drill 0.3)
+    (uvia_dia 0.3)
+    (uvia_drill 0.1)
+  )
+
+  (net_class wire-0.5 ""
+    (clearance 0.1524)
+    (trace_width 0.5)
+    (via_dia 0.6)
+    (via_drill 0.3)
+    (uvia_dia 0.3)
+    (uvia_drill 0.1)
+  )
+
+  (net_class wire-0.6 ""
+    (clearance 0.1524)
+    (trace_width 0.6)
+    (via_dia 0.6)
+    (via_drill 0.3)
+    (uvia_dia 0.3)
+    (uvia_drill 0.1)
+  )
+
+  (net_class wire-0.7 ""
+    (clearance 0.1524)
+    (trace_width 0.7)
+    (via_dia 0.7)
+    (via_drill 0.4)
+    (uvia_dia 0.3)
+    (uvia_drill 0.1)
+  )
+
+  (net_class wire-0.8 ""
+    (clearance 0.1524)
+    (trace_width 0.8)
+    (via_dia 0.8)
+    (via_drill 0.5)
+    (uvia_dia 0.3)
+    (uvia_drill 0.1)
+  )
+
+  (net_class wire-0.9 ""
+    (clearance 0.1524)
+    (trace_width 0.9)
+    (via_dia 0.9)
+    (via_drill 0.6)
+    (uvia_dia 0.3)
+    (uvia_drill 0.1)
+  )
+
+  (net_class wire-1.0 ""
+    (clearance 0.1524)
+    (trace_width 1)
+    (via_dia 1)
+    (via_drill 0.7)
     (uvia_dia 0.3)
     (uvia_drill 0.1)
   )
