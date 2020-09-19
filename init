@@ -12,6 +12,7 @@ DIR_NAME=`echo "$CURRENT" | sed -e 's/.*\/\([^\/]*\)$/\1/'`
 EXTENSIONS=(".pro" ".sch" ".kicad_pcb")
 echo "--------------------------------------------------------"
 echo "1 : Rename Files"
+
 for EXTENSION in ${EXTENSIONS[@]}
 do
   ORIGIN="$DEFAULT_NAME$EXTENSION"
@@ -20,31 +21,32 @@ do
   echo "UPDATE: $UPDATE"
   git mv "$ORIGIN" "$UPDATE"
 done
-
 if test $# -lt 1 || test 'no-push' != $1 ;then
   git add .
   git commit -m 'zsh init: rename files'
 fi
-
 echo "\n"
+
 echo "--------------------------------------------------------"
 echo "2 : Git Submodule add Kicad"
-git submodule add -f  git@github.com:NJL7502L/kicad.git
 
+git submodule add -f  git@github.com:NJL7502L/kicad.git
 if test $# -lt 1 || test 'no-push' != $1 ;then
   git add .
   git commit -m 'zsh init: add submodule kicad'
 fi
 echo "\n"
+
 echo "--------------------------------------------------------"
 echo "3 : Git Submodule add Digikey"
-git submodule add -f git@github.com:Digi-Key/digikey-kicad-library.git
 
+git submodule add -f git@github.com:Digi-Key/digikey-kicad-library.git
 if test $# -lt 1 || test 'no-push' != $1 ;then
   git add .
   git commit -m 'zsh init: add submodule digikey'
 fi
 echo "\n"
+
 echo "--------------------------------------------------------"
 echo "4 : edit sym-lib-table Digikey"
 
@@ -52,18 +54,13 @@ count=0
 sed -i "" -e '$d' sym-lib-table
 find digikey-kicad-library/digikey-symbols -maxdepth 1 -name "*.lib" | while read -r fname
 do
-  # ファイル名を取り出す（拡張子あり）
   fname_ext="${fname##*/}"
-  # ファイル名を取り出す（拡張子なし）
   name="${fname_ext%.*}"
-
   echo -n '.'
-
   count=`expr $count + 1`
   if (( $count % 10 == 0 )); then
     echo $count
   fi
-
   echo "  (lib (name $name)(type Legacy)(uri \${KIPRJMOD}/$fname)(options \"\")(descr \"\"))" >> sym-lib-table
 done
 echo ")" >> sym-lib-table
@@ -80,7 +77,6 @@ echo "5 : edit readme"
 rm README.md
 touch README.md
 echo "# $DIR_NAME" >> README.md
-
 if test $# -lt 1 || test 'no-push' != $1 ;then
   git add .
   git commit -m 'zsh init: edit readme'
@@ -98,8 +94,6 @@ echo "--------------------------------------------------------"
 echo "7 : rm init file"
 
 rm init
-echo "# $DIR_NAME" >> README.md
-
 if test $# -lt 1 || test 'no-push' != $1 ;then
   git add .
   git commit -m 'zsh init: rm init'
@@ -112,6 +106,7 @@ if test $# -lt 1 || test 'no-push' != $1 ;then
 
   git push origin master
   echo "\n"
+  
 fi
 echo "--------------------------------------------------------"
 echo "DONE!!"
