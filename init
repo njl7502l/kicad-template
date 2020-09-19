@@ -48,6 +48,7 @@ echo "\n"
 echo "--------------------------------------------------------"
 echo "4 : edit sym-lib-table Digikey"
 
+count=0
 sed -i "" -e '$d' sym-lib-table
 find digikey-kicad-library/digikey-symbols -maxdepth 1 -name "*.lib" | while read -r fname
 do
@@ -57,10 +58,16 @@ do
   name="${fname_ext%.*}"
 
   echo -n '.'
+
+  count=`expr $count + 1`
+  if (( $count % 10 == 0 )); then
+    echo $count
+  fi
+
   echo "  (lib (name $name)(type Legacy)(uri \${KIPRJMOD}/$fname)(options \"\")(descr \"\"))" >> sym-lib-table
 done
 echo ")" >> sym-lib-table
-echo 'DONE.'
+echo "add $count libs DONE."
 if test $# -lt 1 || test 'no-push' != $1 ;then
   git add .
   git commit -m 'zsh init: edit sym-lib-table digikey'
