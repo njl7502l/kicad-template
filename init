@@ -16,8 +16,8 @@ for EXTENSION in ${EXTENSIONS[@]}
 do
   ORIGIN="$DEFAULT_NAME$EXTENSION"
   UPDATE="$DIR_NAME$EXTENSION"
-  echo "\t" ORIGIN: $ORIGIN
-  echo "\t" UPDATE: $UPDATE
+  echo "ORIGIN: $ORIGIN"
+  echo "UPDATE: $UPDATE"
   git mv "$ORIGIN" "$UPDATE"
 done
 
