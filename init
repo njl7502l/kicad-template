@@ -104,7 +104,7 @@ if test $# -lt 1 || test 'no-push' != $1 ;then
   echo "--------------------------------------------------------"
   echo "8 : Git push"
 
-  git push origin master
+  git push origin head
   echo "\n"
   
 fi
