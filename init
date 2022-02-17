@@ -61,7 +61,7 @@ do
   if (( $count % 10 == 0 )); then
     echo $count
   fi
-  echo "  (lib (name $name)(type Legacy)(uri \${KIPRJMOD}/$fname)(options \"\")(descr \"\"))" >> sym-lib-table
+  echo "  (lib (name \"$name\")(type \"Legacy\")(uri \"\${KIPRJMOD}/$fname\")(options \"\")(descr \"\"))" >> sym-lib-table
 done
 echo ")" >> sym-lib-table
 echo "add $count libs DONE."
