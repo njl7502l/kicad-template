@@ -8,6 +8,8 @@
 !/init
 !/README.md
 !/*.kicad_pcb
+!/*.kicad_pro
+!/*.kicad_sch
 !/*.pro
 !/*.sch
 !/fp-lib-table

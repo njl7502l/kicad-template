@@ -9,7 +9,7 @@ DEFAULT_NAME="Untitled"
 CURRENT=$(cd $(dirname $0);pwd)
 DIR_NAME=`echo "$CURRENT" | sed -e 's/.*\/\([^\/]*\)$/\1/'`
 
-EXTENSIONS=(".pro" ".sch" ".kicad_pcb")
+EXTENSIONS=(".kicad_pro" ".kicad_sch" ".kicad_pcb")
 echo "--------------------------------------------------------"
 echo "1 : Rename Files"
 
@@ -30,7 +30,7 @@ echo "\n"
 echo "--------------------------------------------------------"
 echo "2 : Git Submodule add Kicad"
 
-git submodule add -f  git@github.com:NJL7502L/kicad.git
+git submodule add -f git@github.com:njl7502l/njl7502l-kicad-library.git
 if test $# -lt 1 || test 'no-push' != $1 ;then
   git add .
   git commit -m 'zsh init: add submodule kicad'
