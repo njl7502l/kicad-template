@@ -48,6 +48,16 @@ fi
 echo "\n"
 
 echo "--------------------------------------------------------"
+echo "3 : Git Submodule add Espressif"
+
+git submodule add -f git@github.com:espressif/kicad-libraries.git espressif-kicad-library
+if test $# -lt 1 || test 'no-push' != $1 ;then
+  git add .
+  git commit -m 'zsh init: add submodule digikey'
+fi
+echo "\n"
+
+echo "--------------------------------------------------------"
 echo "4 : edit sym-lib-table Digikey"
 
 count=0
